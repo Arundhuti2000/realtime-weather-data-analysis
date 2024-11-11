@@ -9,7 +9,7 @@ import csv
 import io
 import time
 from collections.abc import Mapping
-#Its a me, Msario
+
 # Set up logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -177,7 +177,7 @@ def process_weather_data(raw_data: Dict[str, Any], region_name: str) -> Dict[str
         forecast = forecast_periods[0] if forecast_periods else {}
         grid = raw_data.get('grid', {}).get('properties', {})
         
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
         def safe_get_value(data: Optional[Mapping], *keys: str, default: Any = '') -> Any:
             try:
@@ -248,8 +248,8 @@ def process_weather_data(raw_data: Dict[str, Any], region_name: str) -> Dict[str
 def save_consolidated_data(data: Dict[str, Any], bucket_name: str) -> None:
     """Save weather data to a single consolidated CSV file."""
     try:
-        current_timestamp = datetime.now()
-        file_name = f'weather_data_{current_timestamp.strftime("%Y-%m-%d")}.csv'
+        current_timestamp = datetime.utcnow()
+        file_name = f'data/weather_data_{current_timestamp.strftime("%Y-%m-%d")}.csv'
         
         # Clean data function
         def clean_value(value: Any) -> str:
@@ -321,7 +321,7 @@ def save_consolidated_data(data: Dict[str, Any], bucket_name: str) -> None:
             Body=output.getvalue(),
             ContentType='text/csv'
         )
-        logger.info(f"Successfully saved data to s3://{bucket_name}/{file_name}")
+        logger.info(f"Successfully saved data to s3://{bucket_name}/data/{file_name}")
         
     except Exception as e:
         logger.error(f"Error saving to S3: {str(e)}")
