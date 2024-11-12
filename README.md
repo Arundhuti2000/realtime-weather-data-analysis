@@ -3,6 +3,7 @@
 A scalable system for collecting, processing, and analyzing weather data from multiple U.S. regions using AWS services. This project utilizes AWS Lambda, S3, and CloudWatch to gather weather information from the National Weather Service API.
 
 ## 📋 Table of Contents
+
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [AWS Services Used](#aws-services-used)
@@ -20,16 +21,20 @@ This project collects real-time weather data from 14 strategically selected loca
 - Real-time weather data collection from multiple regions
 - Comprehensive weather metrics including:
   - Temperature (Celsius & Fahrenheit)
-  - Humidity
-  - Wind speed and direction
+  - Wind speed
   - Barometric pressure
-  - Visibility
+  - Humidity
   - Weather alerts
   - Forecasts
 - Automated data collection and processing
 - Organized data storage with regional partitioning
 - Built-in error handling and logging
-- Weather alert monitoring
+- Weather alert from past two days
+
+## 📊 Dashboard Visualization
+
+![Weather Dashboard](/screenshots\Dashboard.png)
+_Real-time weather dashboard_
 
 ## 🛠 AWS Services Used
 
@@ -46,6 +51,7 @@ This project collects real-time weather data from 14 strategically selected loca
 ## 🚀 Setup Guide (UI-Based)
 
 ### 1. S3 Bucket Creation
+
 1. Open AWS Management Console
 2. Navigate to S3
 3. Click "Create bucket"
@@ -55,6 +61,7 @@ This project collects real-time weather data from 14 strategically selected loca
 7. Click "Create bucket"
 
 ### 2. Lambda Function Setup
+
 1. Go to AWS Lambda in the console
 2. Click "Create function"
 3. Select "Author from scratch"
@@ -70,6 +77,7 @@ This project collects real-time weather data from 14 strategically selected loca
 8. Click "Deploy"
 
 ### 3. IAM Role Setup (Through UI)
+
 1. Go to IAM in AWS Console
 2. Click "Roles"
 3. Find your Lambda's role
@@ -81,6 +89,7 @@ This project collects real-time weather data from 14 strategically selected loca
    ```
 
 ### 4. CloudWatch Schedule Setup
+
 1. Go to CloudWatch in AWS Console
 2. Click "Rules" under Events
 3. Click "Create rule"
@@ -107,4 +116,5 @@ This project collects real-time weather data from 14 strategically selected loca
 This project is part of the academic curriculum at UMass Dartmouth.
 
 ---
+
 **Note:** Make sure to update the Lambda function's environment variables and IAM roles according to your specific AWS account setup.
