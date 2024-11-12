@@ -33,7 +33,7 @@ This project collects real-time weather data from 14 strategically selected loca
 
 ## 📊 Dashboard Visualization
 
-![Weather Dashboard](/screenshots\Dashboard.png)
+![Weather Dashboard](/screenshots/Dashboard.png)
 _Real-time weather dashboard_
 
 ## 🛠 AWS Services Used
